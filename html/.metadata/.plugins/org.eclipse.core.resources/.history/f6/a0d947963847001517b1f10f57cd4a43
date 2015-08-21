@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		String nm = request.getParameter("nm");
+		String hint="";
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
+		PreparedStatement pst = conn.prepareStatement(
+				"select  c.Customer_Id,c.Customer_F_Name,c.Customer_L_Name,p.Product_Id,c.Customer_Status,c.Customer_Acct_No,c.Billing_addr_Id,c.Shipping_addr_Id,c.Customer_Email from Customer,Customer_Product_Service where Customer_Id LIKE ? && c.Customer_Id=p.Customer_Id");
+		pst.setString(1,nm+"%"); 
+		ResultSet rs=  pst.executeQuery(); 
+		response.getWriter().write("<table border=1>");
+		
+		 response.getWriter().write("<tr><th><b>Customer_Id</b><th><b>Customer_F_Name</b><th><b>Customer_L_Name</b></th><th><b>p.Product_Id</b></th><th><b>Customer_Status</b><th><b>Customer_Acct_No</b><th><b>Customer_Id</b><th><b>Billing_addr_Id</b><th><b>Shipping_addr_Id</b><th><b>Customer_Email</b></tr>");
+		
+		while(rs.next()){
+			 response.getWriter().write("<tr><td><b>"+rs.getString("country_id")+"</b></td><td><b>"+rs.getString("country_name")+"</b></td><td><b>"+rs.getString("region_id")+"</b></td></tr>");
+			 
+		}
+		response.getWriter().write("</table>");
+		conn.close();
+	%>
+</body>
+</html>

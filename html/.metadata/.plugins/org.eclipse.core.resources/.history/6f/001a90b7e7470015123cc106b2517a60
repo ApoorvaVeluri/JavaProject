@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+  
+ 
+<script>  
+var request;  
+function sendInfo()  
+{  
+var v=document.vinform.t1.value;  
+var url="ProjIndex?val="+v;  
+ //alert("Var value is"+v);
+if(window.XMLHttpRequest){  
+request=new XMLHttpRequest();  
+}  
+else if(window.ActiveXObject){  
+request=new ActiveXObject("Microsoft.XMLHTTP");  
+}  
+  
+try{  
+request.onreadystatechange=getInfo;  
+request.open("GET",url,true);  
+request.send();  
+}catch(e){alert("Unable to connect to server");}  
+}  
+  
+function getInfo(){  
+if(request.readyState==4){ 
+	if(xmlhttp.status==200{
+var val=request.responseText;  
+document.getElementById('amit').innerHTML=val; 
+	}
+} 
+else{
+	alert("No Customer with Such Customer-Id Found.Please Re-Enter Customer-Id");
+}
+}  
+ 
+</script>  
+</head>  
+<body onload="form1.reset();">  
+    
+<form name="vinform" id="form1">  
+
+Enter Customer id:<input type="text" name="t1" onBlur="sendInfo()" onKeyDown="if(event.keyCode==13) sendInfo()">
+
+ <br>
+<!-- <input type="button"  onClick="sendInfo()" value="Submit"> -->
+
+</form>  
+  
+<span id="amit"> </span>  
+  
+  </body>
+
+</html>

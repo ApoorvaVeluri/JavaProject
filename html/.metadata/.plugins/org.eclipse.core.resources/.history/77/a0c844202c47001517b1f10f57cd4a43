@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Trouble Ticket Form</h2>
+	<form method="POST" action="">
+		<table>
+			
+				
+			
+			
+			<tr>
+				<td>Customer Id</td><br>
+				<td><input type="text" name="customerid" /></td>
+			</tr>
+			</div>
+
+			<tr>
+				<td>Ticket Type</td>
+				<td><input type="radio" name="ticket_type" value="ticket_type" />Individual
+					Ticket</td>
+
+			</tr>
+
+			<tr>
+				<td>Date Of Creation</td>
+				<td><input type="text" name="Date_of_creation" /></td>
+			</tr>
+
+			<tr>
+			<td>Disposition Type</td>
+				<td><select > 
+						<option value=""disabled selected>Disposition Type</option>
+						<option value="Technician Dispatch">Technician Dispatch</option>
+						<option value="Device Dispatch">Device Dispatch</option>
+						<option value="Not Applicable">Not Applicable</option>
+				</select></td>
+			</tr>
+			
+			<tr>
+			<td>Ticket Status></td>
+			<td><input type="radio" name="ticket_status" value="ticket_status" />Open</td>
+			<td><input type="radio" name="ticket_status" value="ticket_status" />Closed</td>
+			
+			<tr>
+				<td colspan="2"><input type="submit" value="Submit" /></td>
+			</tr>
+			
+		</table>
+	</form>
+</body>
+</html>
